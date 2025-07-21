@@ -8,7 +8,7 @@ export async function POST(req) {
   try {
     const { userId } = getAuth(req);
     const { address, items } = await req.json();
-    if (address || items.length === 0) {
+    if (!address || items.length === 0) {
       return NextResponse.json({ success: false, message: "Invalid data" });
     }
 
